@@ -10,3 +10,5 @@ or
 
 pip install -r requirements.txt
 
+# step 2
+# to see what you run go to http://127.0.0.1:7860

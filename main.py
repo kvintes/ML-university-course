@@ -10,3 +10,4 @@ demo = gr.Interface(
 )
 
 demo.launch()
+# to see your result you should go to browser and write http://127.0.0.1:7860
