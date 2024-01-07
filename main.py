@@ -1,4 +1,5 @@
 import gradio as gr
+import pickle
 default_dict = {
     'MSSubClass' : 60,'MSZoning' : 'RL','LotArea' : 5000,'Street' : 'Pave'
     ,'LotShape' : 'Reg','LandContour' : 'Lvl','Utilities' : 'AllPub','LotConfig' : 'Inside'
@@ -13,9 +14,23 @@ default_dict = {
     'OpenPorchSF' : 213,'EnclosedPorch' : 272,'3SsnPorch' : 320,'ScreenPorch' : 410,'PoolArea' : 648,
     'MiscVal' : 8300,'YrSold' : 2005
 }
+
+
 def greet(*args):
-    
-    return [i for i in args] #"Hello " * intensity + name + "!"
+    kekboost_model = None
+    with open("models\kekboost.pickle", "rb") as file:
+        kekboost_model = pickle.load(file)
+    if sum([0 if x is None else 1 for x in args]) != 53:
+        vec = [default_dict.values()]
+    else:
+        for i in args:
+            try:
+                t = int(i)
+                vec.append(t)
+            except:
+                vec.append(i)
+    res = kekboost_model.predict(vec)
+    return res #"Hello " * intensity + name + "!"
 
 demo = gr.Interface(
     fn=greet,
