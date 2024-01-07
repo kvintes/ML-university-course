@@ -11,7 +11,11 @@ or
 `pip install -r requirements.txt`
 
 # step 2
+<<<<<<< HEAD
 ### to see what you run go to http://127.0.0.1:7860
 
 # step 3
 ### you should clone rep and run main with installing all libs  and go to browser and go to http://127.0.0.1:7860
+=======
+### to see what you run go to http://127.0.0.1:7860
+>>>>>>> bd54fba0bb4f265f8e8011b802104bffafdda533
