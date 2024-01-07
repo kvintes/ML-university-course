@@ -20,8 +20,12 @@ def greet(*args):
     kekboost_model = None
     with open("models\kekboost.pickle", "rb") as file:
         kekboost_model = pickle.load(file)
-    if sum([0 if x is None else 1 for x in args]) != 53:
-        vec = [default_dict.values()]
+    print([args])
+    vec = []
+    
+    if sum([0 if (x == [] or x == '') else 1 for x in args]) != 53:
+        print(sum([0 if (x == [] or x == '') else 1 for x in args]))
+        vec = [list(default_dict.values())]
     else:
         for i in args:
             try:
@@ -29,8 +33,12 @@ def greet(*args):
                 vec.append(t)
             except:
                 vec.append(i)
+        vec = [vec]
+
+    print(vec)
     res = kekboost_model.predict(vec)
-    return res #"Hello " * intensity + name + "!"
+    
+    return res[0] #"Hello " * intensity + name + "!"
 
 demo = gr.Interface(
     fn=greet,
@@ -97,15 +105,9 @@ demo = gr.Interface(
     , gr.Dropdown(
         ['PConc', 'CBlock', 'BrkTil', 'Wood', 'Slab', 'Stone'], label="Тип фундамента"
     )
-    , gr.Dropdown(
-        ['PConc', 'CBlock', 'BrkTil', 'Wood', 'Slab', 'Stone'], label="Тип фундамента"
-    )
     , gr.Textbox(label="готовые квадратные футы типа 1", info="0..2200") 
     , gr.Textbox(label="готовые квадратные футы типа 2", info="0..2200") 
     , gr.Textbox(label="незаконченные квадратные футы подвала", info="0..2200") 
-    , gr.Dropdown(
-        ['GasA', 'GasW', 'Grav', 'Wall', 'OthW', 'Floor'], label="Тип отопления"
-    )
     , gr.Dropdown(
         ['Ex', 'Gd', 'TA', 'Fa', 'Po'], label="Качество и состояние отопления"
     )

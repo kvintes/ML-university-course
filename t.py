@@ -12,4 +12,5 @@ default_dict = {
     'OpenPorchSF' : 213,'EnclosedPorch' : 272,'3SsnPorch' : 320,'ScreenPorch' : 410,'PoolArea' : 648,
     'MiscVal' : 8300,'YrSold' : 2005
 }
-print(len(default_dict.keys()))
+print(len((70, 'C (all)', '345', 'Grvl', 'IR2', 'Low', 'AllPub', 'FR2', 'Mod', 'SawyerW', 'RRNn', '2fmCon', '1.5Unf', '5', '5', '1987', '1987', 'Flat', 'Tar&Grv', 'BrkComm', 'HdBoard', 'TA', 'Fa', 'Slab', 'BrkTil', '456', '456', '234', 'OthW', 'Fa', 'N', '4566', '2345', '2345', '2345', '2', '2', '1', '1', '5', '5', 'Ex', '14', 'Mod', '4', '324', 'N', '456', '456', '456', '456', '456', '456', '4565', '2007')))
+print(sum([0 if (x == [] or x == '') else 1 for x in list(default_dict.values())]))
